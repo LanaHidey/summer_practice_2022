@@ -16,6 +16,7 @@ public class Main {
         animals.add(new Cat());
         animals.add(new Horse());
         animals.add(new Turtle());
+        animals.add(new Fish());
 
         for (Animal animal : animals) {
             animal.timePath(earth, water, barrier);
@@ -25,7 +26,11 @@ public class Main {
 
 
         for (Animal animal : animals) {
-            System.out.println(animal.getAnimalType() + " " + Math.round(animal.getTimePath()) + " минут");
+            if (animal.getTimePath() < 0) {
+                System.out.println(animal.getAnimalType() + " не может завершить дистанцию");
+            } else {
+                System.out.println(animal.getAnimalType() + " " + animal.getTimePath() + " минут");
+            }
         }
     }
 }

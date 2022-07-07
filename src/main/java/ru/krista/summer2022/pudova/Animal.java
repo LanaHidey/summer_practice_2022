@@ -1,6 +1,7 @@
 package ru.krista.summer2022.pudova;
 
 public class Animal {
+
     private final double runningSpeed;
     private final double swimmingSpeed;
     private final boolean jump;
@@ -18,18 +19,15 @@ public class Animal {
         this.animalType = animalType;
     }
 
-    public void timePath(int earth, int water, boolean barrier) {
-        if (!jump & barrier){
-            this.timePath = 0;
-            return;
+    public Animal timePath(int earth, int water, boolean barrier) {
+        if ((!jump & barrier) || (earth != 0 & runningSpeed == 0) || (water != 0 & swimmingSpeed == 0)) {
+            this.timePath = -1;
+            return this;
         }
-        double earthTime = earth / mpsToKmh(runningSpeed);
-        double waterTime = water / mpsToKmh(swimmingSpeed);
-        this.timePath = (earthTime + waterTime) * 60;
-    }
-
-    private double mpsToKmh(double mps) {
-        return mps / 0.277777778;
+        double earthTime = earth != 0 ? earth / Utils.mpsToKmh(runningSpeed) : 0;
+        double waterTime = water !=0 ? water / Utils.mpsToKmh(swimmingSpeed) : 0;
+        this.timePath = Math.round((earthTime + waterTime) * 60);
+        return this;
     }
 
     public double getRunningSpeed() {
