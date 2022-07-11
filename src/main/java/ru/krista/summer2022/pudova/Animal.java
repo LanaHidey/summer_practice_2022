@@ -20,7 +20,7 @@ public class Animal {
     }
 
     public Animal timePath(int earth, int water, boolean barrier) {
-        if ((!jump && barrier) || (earth != 0 && runningSpeed == 0) || (water != 0 && swimmingSpeed == 0)) {
+        if ((!jump & barrier) || (earth != 0 & runningSpeed == 0) || (water != 0 & swimmingSpeed == 0)) {
             this.timePath = -1;
             return this;
         }
